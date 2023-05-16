@@ -29,7 +29,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.beersapp.data.network.model.PunkResponse
@@ -92,9 +91,8 @@ fun SearchBar(dashBoardViewModel: DashBoardViewModel, navController: NavControll
                             Routes.BeerDetail.createRoute(
                                 beer.name,
                                 beer.description,
-                                beer.abv,
-                                beer.imageUrl,
-                                )
+                                beer.abv
+                            )
                         )
                     }
                 }

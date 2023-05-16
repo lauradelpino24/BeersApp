@@ -5,20 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Snackbar
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.beersapp.model.BeerDetail
 import com.example.beersapp.model.Routes
 import com.example.beersapp.ui.dashboard.view.DashBoardScreen
 import com.example.beersapp.ui.dashboard.viewmodel.DashBoardViewModel
@@ -61,20 +56,20 @@ fun AppNavigation(loginViewModel: LoginViewModel, dashBoardViewModel: DashBoardV
             DashBoardScreen(dashBoardViewModel = dashBoardViewModel, navController)
         }
 
-        composable(Routes.BeerDetail.route, arguments = listOf(
-            navArgument("beerName") { type = NavType.StringType },
-            navArgument("imageUrl") { type = NavType.StringType },
-            navArgument("description") { type = NavType.StringType },
-            navArgument("abv") { type = NavType.FloatType }
+        composable(
+            Routes.BeerDetail.route, arguments = listOf(
+                navArgument("beerName") { type = NavType.StringType },
+                navArgument("description") { type = NavType.StringType },
+                navArgument("abv") { type = NavType.FloatType },
 
-        )) { backStackEntry ->
+                )
+        ) { backStackEntry ->
             val beerName = backStackEntry.arguments?.getString("beerName") ?: "beerName"
             val description = backStackEntry.arguments?.getString("description") ?: "description"
             val abv = backStackEntry.arguments?.getFloat("abv") ?: 0f
-            val imageUrl = backStackEntry.arguments?.getString("imageUrl") ?: "https://www.cotopaxi.com.ec/sites/default/files/2020-08/BLANCO%20760X440PX_0.png"
 
 
-            BeerDetailsScreen(beerName = beerName, description = description, abv = abv, imageUrl = imageUrl)
+            BeerDetailsScreen(beerName = beerName, description = description, abv = abv)
         }
     }
 }
